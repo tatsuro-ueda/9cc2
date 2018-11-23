@@ -1,4 +1,5 @@
-9cc:
+9cc: 9cc.c
+all:
 	gcc -o 9cc 9cc.c
 	./test.sh
 	rm -f 9cc *.o *- tmp*
