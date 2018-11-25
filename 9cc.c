@@ -12,7 +12,6 @@ enum {
 typedef struct {
     int ty;  // トークンの型
     int val;  // tyがTK_NUMの場合、その数値
-    char *input;  // トークン文字列（エラーメッセージ用）
 } Token;
 
 // トークナイズした結果のトークン列はこの配列に保存する
@@ -32,7 +31,6 @@ void tokenize(char *p) {
 		// *pが'+'か'-'ならば…
         if (*p == '+' || *p == '-') {
             tokens[i].ty = *p;  // トークンのASCIIコードをそのトークンの型とする
-            tokens[i].input = p;  // pと*pの違いがよくわからん
             i++;
             p++;
             continue;
@@ -50,7 +48,6 @@ void tokenize(char *p) {
         exit(1);
     }
     tokens[i].ty = TK_EOF;
-    tokens[i].input = *p;
 }
 
 /*
