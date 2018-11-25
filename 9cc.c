@@ -4,7 +4,7 @@
 
 // トークンの型を返す値
 enum {
-    TK_NUM = 256,  // 整数トークン
+    TK_NUM = 256,  // 整数のノードの型
     TK_EOF,  // 入力の終わりを表すトークン
 };
 
@@ -58,6 +58,18 @@ void error(int i) {
     exit(1);
 }
 */
+
+// ノードの型を返す値
+enum {
+    ND_NUM = 256,  // 整数のノードの型
+};
+
+typedef struct Node {
+    int ty;  // 演算子かND_NUM
+    struct Node *lhs;  // left-hand side
+    struct Node *rhs;  // right-hand side
+    int val;  // tyがND_NUMの場合のみ使う
+} Node;
 
 int main(int argc, char **argv) {
     if (argc != 2) {
